@@ -1,12 +1,12 @@
 //
-//  NatDeviceBase.m
+//  NatDeviceInfo.m
 //
 //  Created by huangyake on 17/1/7.
 //  Copyright © 2017 Nat. All rights reserved.
 //
 
 
-#import "NatDeviceBase.h"
+#import "NatDeviceInfo.h"
 #import <UIKit/UIKit.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
@@ -31,7 +31,7 @@
 @end
 
 
-@implementation NatDeviceBase
+@implementation NatDeviceInfo
 
 + (id)singletonManger{
     static id manager = nil;
