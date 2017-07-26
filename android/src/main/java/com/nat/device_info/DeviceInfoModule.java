@@ -1,4 +1,4 @@
-package com.nat.device_base;
+package com.nat.device_info;
 
 import android.content.Context;
 import android.provider.Settings;
@@ -7,24 +7,23 @@ import java.util.HashMap;
 
 /**
  * Created by xuqinchao on 17/2/7.
- * Copyright (c) 2017 Nat. All rights reserved.
+ * Copyright (c) 2017 Instapp. All rights reserved.
  */
 
-public class HLBaseModule{
+public class DeviceInfoModule {
     private String mUuid;
-
     private Context mContext;
-    private static volatile HLBaseModule instance = null;
+    private static volatile DeviceInfoModule instance = null;
 
-    private HLBaseModule(Context context){
+    private DeviceInfoModule(Context context){
         mContext = context;
     }
 
-    public static HLBaseModule getInstance(Context context) {
+    public static DeviceInfoModule getInstance(Context context) {
         if (instance == null) {
-            synchronized (HLBaseModule.class) {
+            synchronized (DeviceInfoModule.class) {
                 if (instance == null) {
-                    instance = new HLBaseModule(context);
+                    instance = new DeviceInfoModule(context);
                 }
             }
         }
@@ -32,7 +31,7 @@ public class HLBaseModule{
         return instance;
     }
 
-    public void info(HLModuleResultListener listener){
+    public void info(ModuleResultListener listener){
         HashMap<String, String> result = new HashMap<>();
         result.put("model", getModel());
         result.put("vendor", getManufacturer());
@@ -41,6 +40,7 @@ public class HLBaseModule{
         result.put("version", getOSVersion());
         listener.onResult(result);
     }
+
     public String getUuid() {
         if (mUuid == null) {
             mUuid = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
