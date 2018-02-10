@@ -78,9 +78,11 @@
     UIDevice* device = [UIDevice currentDevice];
     
     return @{
+             @"language": [[NSLocale preferredLanguages] objectAtIndex:0],
              @"vendor": @"Apple",
              @"model": [device modelVersion],
              @"platform": @"iOS",
+             @"os": @"iOS",
              @"version": [device systemVersion],
              @"uuid": [self uniqueAppInstanceIdentifier:device],
              @"isVirtual": @([self isVirtual])
